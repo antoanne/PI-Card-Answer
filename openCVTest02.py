@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-threshold = 0.3
+threshold = 0.2
 
 
 '''SPLIT QUESTIONS'''
@@ -12,7 +12,7 @@ t = 0
 while (t < count):
     q = 0
     t += 1
-    table_rgb = cv2.imread('result/croped_questions' + str(t) + '.jpg')
+    table_rgb = cv2.imread('result/croped_questions_' + str(t) + '.jpg')
     table_gray = cv2.cvtColor(table_rgb, cv2.COLOR_BGR2GRAY)
     w, h = table_gray.shape[::-1]
     while (q < q_count):

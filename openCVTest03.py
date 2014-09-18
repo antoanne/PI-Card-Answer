@@ -25,6 +25,11 @@ question_e_gray = cv2.cvtColor(question_e, cv2.COLOR_BGR2GRAY)
 
 questions = { 'a': question_a_gray, 'b': question_b_gray, 'c': question_c_gray, 'd': question_d_gray, 'e': question_e_gray }
 
+def gravaRespostas(r):
+    file = open("result/respostas.txt", "w")
+    file.write(r)
+    file.close()
+
 q = 0
 respoastas = ''
 while (q < count):
@@ -46,6 +51,7 @@ while (q < count):
     #print resposta
     print "question " + str(q) + " resposta (" + resposta[0].upper() + ")"
     respoastas += resposta[0].upper()
+    gravaRespostas(respoastas)
 print respoastas
 
 

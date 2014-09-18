@@ -3,12 +3,12 @@ import numpy as np
 threshold = 0.3
 max = 3
 
-matrix_rgb = cv2.imread('images/matrix.jpg')
+matrix_rgb = cv2.imread('images/PI-2014-3003-2BIM-1DIA- 1.jpeg')
 matrix_gray = cv2.cvtColor(matrix_rgb, cv2.COLOR_BGR2GRAY)
 w2, h2 = matrix_gray.shape[::-1]
 newx,newy = matrix_rgb.shape[1]/3, matrix_rgb.shape[0]/3
 
-template = cv2.imread('templates/table15.jpg')
+template = cv2.imread('templates/table15_home.jpg')
 template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
 w, h = template_gray.shape[::-1]
 
@@ -21,9 +21,9 @@ def splitTable():
     loc = np.where( res >= threshold )
     for pt in zip(*loc[::-1]):
         count += 1
-        img_croped = matrix_gray[0:h2, pt[0]- (w/5):pt[0] + w]
-        cv2.imwrite('result/croped_matrix' + str(((pt[0]+w)/(w2/3)) +1) + '.jpg',img_croped)
-        cv2.rectangle(matrix_gray, (pt[0] - (w/5),0), (pt[0] + w, h2), (0,0,255), -1)
+        img_croped = matrix_gray[0:h2, pt[0]- (w/6):pt[0] + w]
+        cv2.imwrite('result/matrix_' + str(((pt[0])/((w2-w2/10)/3))+1) + '.jpg',img_croped)
+        cv2.rectangle(matrix_gray, (pt[0],0), (pt[0] + w, h2), (0,0,255), -1)
         print 'table ' + str(pt) + ' h' + str(h) + ' w' + str(w) + ' :: ' + str((pt[0]+w)/(w2/3))
         break
 
@@ -36,7 +36,7 @@ print (str(count) + " tables")
 
 '''QUESTIONS'''
 threshold = 0.4
-q_template = cv2.imread('templates/question_full.jpg')
+q_template = cv2.imread('templates/question_full_home.jpg')
 q_template_gray = cv2.cvtColor(q_template, cv2.COLOR_BGR2GRAY)
 w, h = q_template_gray.shape[::-1]
 q_count = 0
@@ -52,7 +52,7 @@ def splitQuestions():
     for pt in zip(*loc[::-1]):
         q_count += 1
         matrix_croped = matrix_croped_gray[ pt[1]:pt[1] + (50*16), 0: pt[0] + w2 ]
-        cv2.imwrite('result/croped_questions' + str(q_count) + '.jpg',matrix_croped)
+        cv2.imwrite('result/croped_questions_' + str(q_count) + '.jpg',matrix_croped)
         print 'question ' + str(pt) + ' h' + str(h) + ' w' + str(w)
         break
     print (str(q_count) + " questions")
@@ -61,7 +61,7 @@ def splitQuestions():
 t = 0
 while (t < count):
     t += 1
-    matrix_croped_rgb = cv2.imread('result/croped_matrix' + str(t) + '.jpg')
+    matrix_croped_rgb = cv2.imread('result/matrix_' + str(t) + '.jpg')
     matrix_croped_gray = cv2.cvtColor(matrix_croped_rgb, cv2.COLOR_BGR2GRAY)
     w2, h2 = matrix_croped_gray.shape[::-1]
     cropedImage = splitQuestions()
