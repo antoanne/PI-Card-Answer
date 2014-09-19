@@ -1,0 +1,11 @@
+result*
+images_old/*
+images/*
+*.pbxproj
+openCVTest.old.py
+
+*.xcsettings
+
+*.xcscheme
+
+*.plist
