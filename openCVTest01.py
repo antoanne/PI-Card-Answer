@@ -1,9 +1,13 @@
 import cv2
 import numpy as np
-threshold = 0.3
+import sys
+
+arq = sys.argv[1]
+
+threshold = 0.2
 max = 3
 
-matrix_rgb = cv2.imread('images/PI-2014-3003-2BIM-1DIA- 1.jpeg')
+matrix_rgb = cv2.imread(str(arq))
 matrix_gray = cv2.cvtColor(matrix_rgb, cv2.COLOR_BGR2GRAY)
 w2, h2 = matrix_gray.shape[::-1]
 newx,newy = matrix_rgb.shape[1]/3, matrix_rgb.shape[0]/3
@@ -22,9 +26,9 @@ def splitTable():
     for pt in zip(*loc[::-1]):
         count += 1
         img_croped = matrix_gray[0:h2, pt[0]- (w/6):pt[0] + w]
-        cv2.imwrite('result/matrix_' + str(((pt[0])/((w2-w2/10)/3))+1) + '.jpg',img_croped)
+        cv2.imwrite('result/matrix_' + str(((pt[0])/(w2/4))+1) + '.jpg',img_croped)
         cv2.rectangle(matrix_gray, (pt[0],0), (pt[0] + w, h2), (0,0,255), -1)
-        print 'table ' + str(pt) + ' h' + str(h) + ' w' + str(w) + ' :: ' + str((pt[0]+w)/(w2/3))
+        print 'table ' + str(pt) + ' h' + str(h) + ' w' + str(w) + ' :: ' + str(((pt[0])/(w2/4))+1)
         break
 
     if (len(zip(*loc[::-1])) > 0):
@@ -35,7 +39,7 @@ print (str(count) + " tables")
 
 
 '''QUESTIONS'''
-threshold = 0.4
+threshold = 0.5
 q_template = cv2.imread('templates/question_full_home.jpg')
 q_template_gray = cv2.cvtColor(q_template, cv2.COLOR_BGR2GRAY)
 w, h = q_template_gray.shape[::-1]
@@ -44,7 +48,7 @@ count = 3
 def splitQuestions():
     global q_count
     res = cv2.matchTemplate(matrix_croped_gray,q_template_gray,cv2.TM_CCOEFF_NORMED)
-    loc = np.where( res >= threshold)
+    loc = np.where( res >= threshold )
     #print loc
     #print zip(*loc[::-1])
     
