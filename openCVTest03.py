@@ -55,7 +55,7 @@ while (q < count):
     #print resposta
     #print "question " + str(q) + " resposta (" + resposta[0].upper() + ")"
     respoastas += resposta[0].upper()
-gravaRespostas(str(arq).split('/')[-1].split('.')[0] + '#' + respoastas + '\n')
+gravaRespostas(','.join(str(arq).split('/')[-1].split('.')[0].split('-')) + ',' + ','.join(respoastas) + '\n')
 #print respoastas
 sys.stdout.write('#OK#')
 

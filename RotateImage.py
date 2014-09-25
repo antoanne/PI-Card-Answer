@@ -7,7 +7,7 @@ arq = sys.argv[1]
 img = cv2.imread(arq,0)
 rows,cols = img.shape
 
-M = cv2.getRotationMatrix2D((cols/2,rows/2),-0.5,1)
+M = cv2.getRotationMatrix2D((cols/2,rows/2),0.5,1)
 dst = cv2.warpAffine(img,M,(cols,rows))
 
 cv2.imwrite(arq, dst)
