@@ -22,4 +22,4 @@ while (t < count):
         #cv2.imshow('result',question)
         #cv2.waitKey(0)
         #cv2.destroyAllWindows()
-        print "question " + str(q + ((t-1)*q_count))
+        #print "question " + str(q + ((t-1)*q_count))

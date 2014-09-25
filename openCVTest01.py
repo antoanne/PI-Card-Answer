@@ -2,7 +2,9 @@ import cv2
 import numpy as np
 import sys
 
-arq = sys.argv[1]
+arq = sys.argv[-1]
+
+sys.stdout.write('\n' + str(arq).split('/')[-1].split('.')[0])
 
 threshold = 0.2
 max = 3
@@ -28,14 +30,14 @@ def splitTable():
         img_croped = matrix_gray[0:h2, pt[0]- (w/6):pt[0] + w]
         cv2.imwrite('result/matrix_' + str(((pt[0])/(w2/4))+1) + '.jpg',img_croped)
         cv2.rectangle(matrix_gray, (pt[0],0), (pt[0] + w, h2), (0,0,255), -1)
-        print 'table ' + str(pt) + ' h' + str(h) + ' w' + str(w) + ' :: ' + str(((pt[0])/(w2/4))+1)
+        #print 'table ' + str(pt) + ' h' + str(h) + ' w' + str(w) + ' :: ' + str(((pt[0])/(w2/4))+1)
         break
 
     if (len(zip(*loc[::-1])) > 0):
         splitTable()
 
 splitTable()
-print (str(count) + " tables")
+#print (str(count) + " tables")
 
 
 '''QUESTIONS'''
@@ -57,9 +59,9 @@ def splitQuestions():
         q_count += 1
         matrix_croped = matrix_croped_gray[ pt[1]:pt[1] + (50*16), 0: pt[0] + w2 ]
         cv2.imwrite('result/croped_questions_' + str(q_count) + '.jpg',matrix_croped)
-        print 'question ' + str(pt) + ' h' + str(h) + ' w' + str(w)
+        #print 'question ' + str(pt) + ' h' + str(h) + ' w' + str(w)
         break
-    print (str(q_count) + " questions")
+    #print (str(q_count) + " questions")
     #return matrix_croped
 
 t = 0

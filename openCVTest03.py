@@ -53,10 +53,11 @@ while (q < count):
                 resposta = [option, len(zip(*loc[::-1]))]
         #print "   " + str(option) + "::" + str(len(zip(*loc[::-1])))
     #print resposta
-    print "question " + str(q) + " resposta (" + resposta[0].upper() + ")"
+    #print "question " + str(q) + " resposta (" + resposta[0].upper() + ")"
     respoastas += resposta[0].upper()
-gravaRespostas(str(arq).split('.')[0].split('/')[1] + '#' + respoastas + '\n')
-print respoastas
+gravaRespostas(str(arq).split('/')[-1].split('.')[0] + '#' + respoastas + '\n')
+#print respoastas
+sys.stdout.write('#OK#')
 
 
 
