@@ -1,3 +1,5 @@
+sh run.sh images/PI-2014-3BIM-CROP/* >> images/PI-2014-3BIM-CROP.log
+
 Resize
     http://enumap.wordpress.com/2012/11/23/python-opencv-resize-image/
 
