@@ -9,3 +9,5 @@ openCVTest.old.py
 *.xcscheme
 
 *.plist
+
+*.csv
