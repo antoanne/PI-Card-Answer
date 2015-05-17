@@ -1,7 +1,5 @@
 import cv2
-import numpy as np
 threshold = 0.2
-
 
 '''SPLIT QUESTIONS'''
 count = 3
