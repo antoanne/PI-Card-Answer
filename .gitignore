@@ -11,3 +11,5 @@ openCVTest.old.py
 *.plist
 
 *.csv
+
+*.xlsx

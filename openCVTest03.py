@@ -59,24 +59,3 @@ gravaRespostas(','.join(str(arq).split('/')[-2].split('-')) + ',' + str(arq).spl
 #print respoastas
 sys.stdout.write('#OK#')
 
-
-
-
-
-
-        #for pt in zip(*loc[::-1]):
-        #print str(option) + "::" + str(pt)
-
-
-        #cv2.rectangle(question_gray, (pt[0] - (w/5),0), (pt[0] + w, h2), (0,0,255), -1)
-
-
-        #print str(option) + "::" + str(len(zip(*loc[::-1])))
-
-        #q += 1
-        #question = table_gray[ (q-1) * (h/q_count) : q *((h-2)/q_count), 0: w ]
-        #cv2.imwrite('result/question_' + str(q + ((t-1)*q_count)) + '.jpg', question)
-        #cv2.imshow('result',question)
-        #cv2.waitKey(0)
-        #cv2.destroyAllWindows()
-        #print "question " + str(q + ((t-1)*q_count))
