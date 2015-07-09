@@ -15,7 +15,8 @@ while (t < count):
     w, h = table_gray.shape[::-1]
     while (q < q_count):
         q += 1
-        question = table_gray[ (q-1) * (h/q_count) : q *((h-2)/q_count), 0: w ]
+        #question = table_gray[ (q-1) * (h/q_count) : q *((h-2)/q_count), 0: w ]
+        question = table_gray[ (q-1) * (h/q_count) : q *((h+10)/q_count), 0: w ]
         cv2.imwrite('result/question_' + str(q + ((t-1)*q_count)) + '.jpg', question)
         #cv2.imshow('result',question)
         #cv2.waitKey(0)

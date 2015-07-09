@@ -4,6 +4,7 @@ import sys
 
 arq = sys.argv[1]
 
+#0.62
 threshold = 0.7
 
 

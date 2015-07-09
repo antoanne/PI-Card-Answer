@@ -1,4 +1,7 @@
 result*
+one_result/*
+respostas_lixo/*
+templates.2015.errado/*
 images_old/*
 images/*
 *.pbxproj
@@ -13,3 +16,5 @@ openCVTest.old.py
 *.csv
 
 *.xlsx
+
+

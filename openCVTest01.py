@@ -7,7 +7,8 @@ arq = sys.argv[-1]
 
 sys.stdout.write('\n' + str(arq).split('/')[-1].split('.')[0])
 
-threshold = 0.22
+# 0.27
+threshold = 0.40
 max = 3
 
 matrix_rgb = cv2.imread(str(arq))
@@ -43,7 +44,8 @@ splitTable()
 
 
 #NEW QUESTIONS
-threshold = 0.25
+#0.25
+threshold = 0.37
 q_count = 0
 count = 3
 def splitQuestions():
@@ -57,7 +59,8 @@ def splitQuestions():
     for pt in zip(*loc[::-1]):
         q_count += 1
         #print "%d :: %d :: %d :: %d" % (pt[1], pt[0], w, h)
-        matrix_croped = matrix_croped_gray[ pt[1] + 60: pt[1] + h - 88, 0: pt[0] + w ]
+        #matrix_croped = matrix_croped_gray[ pt[1] + 60: pt[1] + h - 88, 0: pt[0] + w ]
+        matrix_croped = matrix_croped_gray[ pt[1] + 15: pt[1] + h - 88, 0: w + 88 ]
         cv2.imwrite('result/croped_questions_' + str(q_count) + '.jpg',matrix_croped)
         #print 'question ' + str(pt) + ' h' + str(h) + ' w' + str(w)
         break
