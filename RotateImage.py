@@ -1,16 +1,19 @@
 import cv2
 import numpy as np
 import sys
+import os
 
-arq = sys.argv[1]
+folder = sys.argv[1]
 
-img = cv2.imread(arq,0)
-rows,cols = img.shape
+for filename in os.listdir(folder):
+    if((filename != ".DS_Store") and (len(filename) >= 10)):
+        print(len(filename), filename)
+        img = cv2.imread(str(folder) + str(filename),0)
+        rows,cols = img.shape
+        M = cv2.getRotationMatrix2D((cols/2,rows/2),-1,1)
+        dst = cv2.warpAffine(img,M,(cols,rows))
 
-M = cv2.getRotationMatrix2D((cols/2,rows/2),0.5,1)
-dst = cv2.warpAffine(img,M,(cols,rows))
-
-cv2.imwrite(arq, dst)
+        cv2.imwrite(str(folder) + str(filename), dst)
 '''
 cv2.imshow('result',dst)
 cv2.waitKey(0)
